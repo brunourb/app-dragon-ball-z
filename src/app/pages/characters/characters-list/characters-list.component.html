@@ -1,1 +1,9 @@
-<p>characters-list works!</p>
+<h1>Lista de Characters</h1>
+<ul *ngFor="let item of paginationCharacter?.items">
+  <li>
+    id: {{item.id}}<br>
+    name: {{item.name}}<br>
+    ki: {{item.ki}}<br>
+    <img [src]="item.image"/>
+  </li>
+</ul>

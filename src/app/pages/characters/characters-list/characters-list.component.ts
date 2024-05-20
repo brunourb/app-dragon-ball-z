@@ -1,6 +1,7 @@
-import { Meta, Link } from './../characters';
 import { Component } from '@angular/core';
+
 import { PaginationCharacter } from '../characters';
+import { CharactersService } from '../characters.service';
 
 @Component({
   selector: 'app-characters-list',
@@ -9,26 +10,27 @@ import { PaginationCharacter } from '../characters';
 })
 export class CharactersListComponent {
 
-  //data: PaginationCharacter | undefined;
+  paginationCharacter: PaginationCharacter | undefined;
 
-  data: PaginationCharacter | undefined = {
-    items: [],
-    meta: {
-      totalItems: 0,
-      itemCount: 0,
-      itemsPerPage: 0,
-      totalPages: 0,
-      currentPage: 0
-    },
-    links: {
-      first: "",
-      previous: "",
-      next: "",
-      last: "",
+  private characters:[] = [];
+
+
+  //injeção de dependência
+  constructor(private service: CharactersService){
+
+  //regra para fazer a consulta
+    this.service.getCharacters()
+    .subscribe((dados: PaginationCharacter) => {
+    //variável dados, contém as informações oriundas do service;
+    //a variável dados está sendo tipa para  PaginationCharacter
+    //é preciso criar uma variável no componente para receber os dados da camada de serviço.
+      console.log(dados);
+
+      //As informações recebida do serviço, são 'setadas' na propriedade que irá 'imprimir' os dados no componente.
+      this.paginationCharacter = dados;
     }
+  );
+
   }
-
-
-
 
 }
