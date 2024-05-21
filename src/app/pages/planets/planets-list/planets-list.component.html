@@ -1,1 +1,8 @@
-<p>planets-list works!</p>
+<h1>Lista de Planetas</h1>
+<ol *ngFor="let item of paginationPlanets?.items">
+  <li>
+    id: {{item.id}}<br>
+    name: {{item.name}}<br>
+    <img [src]="item.image"/>
+  </li>
+</ol>
