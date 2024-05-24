@@ -1,0 +1,13 @@
+<h1>Lista de posts</h1>
+
+<!--criada lista ordenada para imprimir dados-->
+<!-- executar laço de repetição (loop - *ngFor)-->
+<ol *ngFor="let item of data">
+    <li>
+        <!--Imprimir um item da lista-->
+        id: {{item.id}}<br>
+        slug: {{item.slug}}<br>
+        <img [src]="item.thumbnail"/>
+        publishedAt: {{item.publishedAt}}
+    </li>
+</ol>
